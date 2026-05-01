@@ -1,16 +1,18 @@
 # Maternal Health Risk Prediction
 
-This repository contains a machine learning portfolio project for predicting **maternal health risk level** using patient health measurements.
+This repository contains a machine learning portfolio project for predicting **maternal health risk level** using clinical health measurements.
 
-The project uses a tabular dataset and a trained machine learning model to classify maternal health risk into categories such as low, mid, or high risk.
+The project uses a tabular maternal health dataset and a saved machine learning model to classify risk level.
 
 ## Project Goal
 
-The goal of this project is to build a machine learning workflow that can predict maternal health risk level from clinical features.
+The goal of this project is to build a machine learning workflow that predicts maternal health risk based on health-related features such as age, blood pressure, blood sugar, body temperature, and heart rate.
 
 This project is for learning and portfolio demonstration only. It is **not** a medical diagnostic tool.
 
 ## Repository Files
+
+Your uploaded repository currently contains:
 
 ```text
 maternal-health-risk-prediction-project/
@@ -20,71 +22,62 @@ maternal-health-risk-prediction-project/
 ├── LICENSE
 ├── Data_README.md
 ├── maternal_health_risk_prediction.ipynb
-├── data/
-│   └── Maternal_Health_Risk_Data_Set_Modified.csv
-└── models/
-    └── risk_model.joblib
+├── Maternal_Health_Risk_Data_Set_Modified.csv
+└── risk_model.joblib
 ```
 
 ## Main Notebook
 
 ### `maternal_health_risk_prediction.ipynb`
 
-The notebook includes:
+This notebook includes the full machine learning workflow:
 
 - Loading the maternal health risk dataset
-- Exploring dataset features
+- Exploring the data
 - Checking missing values
-- Visualizing feature relationships
-- Preparing features and target labels
-- Training machine learning models
+- Cleaning and preparing the target labels
+- Splitting data into training and testing sets
+- Training a machine learning model
 - Evaluating model performance
 - Saving or loading the trained model
 
 ## Dataset
 
-The dataset included in this project is:
+The dataset file is:
 
 ```text
-data/Maternal_Health_Risk_Data_Set_Modified.csv
+Maternal_Health_Risk_Data_Set_Modified.csv
 ```
 
-Dataset summary:
+The target column is usually:
 
 ```text
-Dataset rows: 679
-Dataset columns: 8
-Target column: RiskLevel
-Class distribution: {'low risk': 404, 'high risk': 271, 'Low risk': 3, 'HIGH risk': 1}
+RiskLevel
 ```
 
-Main columns:
+The project predicts maternal risk categories such as:
 
-- `CitizenID`
-- `Age`
-- `SystolicBP`
-- `DiastolicBP`
-- `BS`
-- `BodyTemp`
-- `HeartRate`
-- `RiskLevel`
+```text
+low risk
+high risk
+```
+
+Depending on the dataset version, labels may have different capitalization, such as `Low risk` or `HIGH risk`. These should be cleaned before training so the model learns consistent classes.
 
 ## Saved Model
 
 The saved model file is:
 
 ```text
-models/risk_model.joblib
+risk_model.joblib
 ```
 
-This file can be loaded with `joblib` if you want to reuse the trained model.
-
-Example:
+You can load it using:
 
 ```python
 import joblib
 
-model = joblib.load("models/risk_model.joblib")
+model = joblib.load("risk_model.joblib")
 ```
 
 ## Tools and Libraries
@@ -133,7 +126,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Open Jupyter Notebook
+### 4. Open the Notebook
 
 ```bash
 jupyter notebook
@@ -147,22 +140,43 @@ maternal_health_risk_prediction.ipynb
 
 Run the notebook cells from top to bottom.
 
+## Example Project Workflow
+
+The project follows this general workflow:
+
+```text
+Load dataset
+↓
+Explore and clean data
+↓
+Prepare features and target
+↓
+Train machine learning model
+↓
+Evaluate model performance
+↓
+Save trained model
+↓
+Use saved model for prediction
+```
+
 ## Important Medical Disclaimer
 
 This project is for education and portfolio demonstration only.
 
-It should not be used for real diagnosis, treatment, triage, or clinical decision-making. Any real healthcare machine learning model requires clinical validation, privacy review, regulatory review, and expert medical oversight.
+It should **not** be used for real diagnosis, treatment, triage, or clinical decision-making. Any real healthcare machine learning system requires clinical validation, expert medical review, privacy review, and regulatory approval.
 
 ## Skills Demonstrated
 
 This project demonstrates:
 
 - Healthcare data analysis
-- Data cleaning and preprocessing
+- Data cleaning
+- Feature and target preparation
 - Classification modeling
 - Model evaluation
-- Saving and loading machine learning models
-- Jupyter Notebook project organization
+- Saving and loading trained models
+- Jupyter Notebook organization
 - GitHub portfolio documentation
 
 ## Future Improvements
@@ -170,12 +184,13 @@ This project demonstrates:
 Possible next steps:
 
 - Add confusion matrix visualization
-- Add classification report summary to the README
-- Compare multiple models side by side
+- Add classification report results to this README
+- Compare multiple models
 - Add feature importance analysis
-- Add a Streamlit web app demo
-- Add model prediction examples
-- Improve notebook explanations for beginners
+- Add example predictions
+- Build a small Streamlit web app
+- Improve label cleaning for `RiskLevel`
+- Add model performance screenshots
 
 ## Author
 
